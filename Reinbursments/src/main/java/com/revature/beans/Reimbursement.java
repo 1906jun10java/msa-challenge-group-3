@@ -1,9 +1,22 @@
 package com.revature.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="DEA_REIMBURSMENT")
 public class Reimbursement {
 	
+	@Id
+    @GeneratedValue
+    @Column(name = "REIM_ID", nullable = false)
 	private int id;
+	@Column(name="EMPLOYEE_NAME")
 	private String employee;
+	@Column(name="AMOUNT")
 	private double amount;
 	
 	public Reimbursement() {
