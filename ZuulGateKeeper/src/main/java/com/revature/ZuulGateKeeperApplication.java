@@ -14,11 +14,12 @@ public class ZuulGateKeeperApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ZuulGateKeeperApplication.class, args);
+//		System.out.println("Opening the Refrigerator");
 	}
 	
-	@RequestMapping
-	public String callBusiness() {
-		return "BUSINESS";
-	}
+//	@RequestMapping
+//	public String callBusiness() {
+//		return "BUSINESS";
+//	}
 
 }
