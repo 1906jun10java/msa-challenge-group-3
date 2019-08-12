@@ -35,6 +35,7 @@ public class ReimbursementController {
 		double amount = (double) body.get("amount");
 		
 		Reimbursement reim = new Reimbursement(id, emp, amount);
+		System.out.print(reim);
 		rDAO.save(reim);
 	}
 
