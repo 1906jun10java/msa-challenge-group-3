@@ -30,12 +30,10 @@ public class ReimbursementController {
 	
 	@PostMapping(value="/add")
 	public void addReim(@RequestBody Map<String, Object> body) {
-		int id = (int) body.get("id");
 		String emp = (String) body.get("employee");
 		double amount = (double) body.get("amount");
 		
-		Reimbursement reim = new Reimbursement(id, emp, amount);
-		System.out.print(reim);
+		Reimbursement reim = new Reimbursement(emp, amount);
 		this.rDAO.save(reim);
 	}
 

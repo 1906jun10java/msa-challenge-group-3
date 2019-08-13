@@ -26,9 +26,8 @@ public class Reimbursement {
 		super();
 	}
 	
-	public Reimbursement(int id, String employee, double amount) {
+	public Reimbursement(String employee, double amount) {
 		super();
-		this.id = id;
 		this.employee = employee;
 		this.amount = amount;
 	}
@@ -55,6 +54,11 @@ public class Reimbursement {
 
 	public void setAmount(double amount) {
 		this.amount = amount;
+	}
+
+	@Override
+	public String toString() {
+		return "Reimbursement [id=" + id + ", employee=" + employee + ", amount=" + amount + "]";
 	}
 	
 }
