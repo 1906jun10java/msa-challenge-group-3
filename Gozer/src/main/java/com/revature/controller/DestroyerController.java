@@ -43,6 +43,7 @@ public class DestroyerController {
 	public void addDestroyer(@RequestBody Map<String, Object> body) {
 		String destroyerName = (String) body.get("destroyer");
 		Destroyer destroyer = new Destroyer(destroyerName);
+		this.dDAO.save(destroyer);
 	}
 
 }
