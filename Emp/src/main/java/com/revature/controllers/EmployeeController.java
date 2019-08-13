@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -21,12 +22,20 @@ public class EmployeeController {
     
     private EmployeeDAO eDAO;
     
+    @Value("${message: Who you gonna call?}")
+    private String message;
+    
     @Autowired
     public EmployeeController(EmployeeDAO eDAO)
     {
     	this.eDAO = eDAO;
     }
 
+    @GetMapping("/message")
+    public String getMessage() {
+    	return this.message;
+    }
+    
     @GetMapping(value = "/employees", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<List<Employee>> getEmployees() {
         return new ResponseEntity<>(this.eDAO.findAll(), HttpStatus.OK);
