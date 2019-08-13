@@ -1,5 +1,6 @@
 package com.revature.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +19,13 @@ public class ReimbursementController {
 	private ReimbursementDAO rDAO;
 	
 	@Autowired
-	public ReimbursementController(ReimbursementDAO rDao) {
+	public ReimbursementController(ReimbursementDAO rDAO) {
 		this.rDAO = rDAO;
 	}
 	
 	@GetMapping(value="/getreims", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public Reimbursement getReims(){
-		Reimbursement temp = new Reimbursement(1, "Bob", 250.00);
-		return temp;
+	public List<Reimbursement> getReims(){
+		return this.rDAO.findAll();
 	}
 	
 	@PostMapping(value="/add")
@@ -36,7 +36,7 @@ public class ReimbursementController {
 		
 		Reimbursement reim = new Reimbursement(id, emp, amount);
 		System.out.print(reim);
-		rDAO.save(reim);
+		this.rDAO.save(reim);
 	}
 
 }
