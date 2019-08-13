@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -19,10 +20,17 @@ import com.revature.datalayer.ReimbursementDAO;
 public class ReimbursementController {
 	
 	private ReimbursementDAO rDAO;
+	@Value("${message: Stay Puft}")
+	private String message;
 	
 	@Autowired
 	public ReimbursementController(ReimbursementDAO rDAO) {
 		this.rDAO = rDAO;
+	}
+	
+	@GetMapping("/message")
+	public String getMessage() {
+		return this.message;
 	}
 	
 	@GetMapping(value="/getreims", produces = {MediaType.APPLICATION_JSON_VALUE})
