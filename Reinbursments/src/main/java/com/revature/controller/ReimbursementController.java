@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,8 +26,8 @@ public class ReimbursementController {
 	}
 	
 	@GetMapping(value="/getreims", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public List<Reimbursement> getReims(){
-		return this.rDAO.findAll();
+	public ResponseEntity<List<Reimbursement>> getReims(){
+		return new ResponseEntity<>(this.rDAO.findAll(), HttpStatus.OK);
 	}
 	
 	@PostMapping(value="/add")
